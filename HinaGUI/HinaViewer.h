@@ -1,0 +1,11 @@
+#ifndef LEARNIMGUI_HINAVIEWER_H
+#define LEARNIMGUI_HINAVIEWER_H
+
+
+class HinaViewer
+{
+
+};
+
+
+#endif //LEARNIMGUI_HINAVIEWER_H
