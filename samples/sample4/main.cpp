@@ -3,6 +3,8 @@
 int main()
 {
     HinaGUI::HinaViewer viewer;
-    viewer.init("C:/Users/Administrator/Desktop/BFU_Graphics/HinaGUI/samples/sample3/1.json");
+    viewer.init("/Users/xayah/Desktop/BFU-Graphics/HinaGUI/samples/sample3/1.json");
+    viewer.launch();
+    viewer.kill();
     return 0;
 }

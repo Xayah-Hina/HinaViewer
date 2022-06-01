@@ -7,6 +7,7 @@ void HinaGUI::Base::DescInitable::init(const std::string &json_file)
     json_file_ = json_file;
     nlohmann::json json = nlohmann::json::parse(std::ifstream(json_file));
     parse(json);
+    inited = true;
 }
 
 void HinaGUI::Base::DescInitable::parse(const nlohmann::json &json)

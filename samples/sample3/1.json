@@ -1,6 +1,7 @@
 {
-  "pos_x": 1,
-  "pos_y": 2,
-  "width": 3,
-  "height": 4
+  "name": "Hina Window",
+  "width": 1024,
+  "height": 768,
+  "pos_x": 0,
+  "pos_y": 0
 }

@@ -2,6 +2,7 @@
 #define HINAGUI_HINAVIEWER_H
 
 #include "base/DescInitable.h"
+#include "core/Window.h"
 
 namespace HinaGUI
 {
@@ -10,14 +11,22 @@ namespace HinaGUI
     public:
         struct HinaViewerDesc : public Desc
         {
-            int pos_x, pos_y;
+            std::string name;
             int width, height;
+            int pos_x, pos_y;
         };
 
+    public:
+        void init(const std::string &json_file) override;
+        void launch();
+        void kill();
         void resize(int width, int height);
 
     protected:
         void parse(const nlohmann::json &json) override;
+
+    protected:
+        Window *window_ = nullptr;
     };
 }
 

@@ -22,12 +22,13 @@ namespace HinaGUI::Base
         };
 
     public:
-        void init(const std::string &json_file);
+        virtual void init(const std::string &json_file);
 
     protected:
         virtual void parse(const nlohmann::json &json);
         Desc *desc_ = nullptr; // DISABLE arbitrary altering from outside
         std::string json_file_;
+        bool inited = false;
     };
 }
 
