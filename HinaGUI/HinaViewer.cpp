@@ -12,14 +12,8 @@ void HinaViewer::init(const std::string &json_file)
     auto pos_x = desc_->as<HinaViewerDesc>()->pos_x;
     auto pos_y = desc_->as<HinaViewerDesc>()->pos_y;
 
-    window_ = new Window();
+    window_ = new Core::Window();
     window_->init(name, width, height, pos_x, pos_y);
-}
-
-void HinaViewer::resize(int width, int height)
-{
-    desc_->as<HinaViewerDesc>()->width = width;
-    desc_->as<HinaViewerDesc>()->height = height;
 }
 
 void HinaViewer::parse(const nlohmann::json &json)
@@ -44,4 +38,15 @@ void HinaViewer::launch()
 void HinaViewer::kill()
 {
     window_->kill();
+}
+
+void HinaViewer::resize(int width, int height)
+{
+    desc_->as<HinaViewerDesc>()->width = width;
+    desc_->as<HinaViewerDesc>()->height = height;
+}
+
+void HinaViewer::set_background_color(const Eigen::Vector4f &color)
+{
+
 }

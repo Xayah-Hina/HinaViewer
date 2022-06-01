@@ -2,6 +2,8 @@
 
 #include <utility>
 
+using namespace HinaGUI::Core;
+
 void Window::init(const std::string &window_name, int width, int height, int pos_x, int pos_y)
 {
     init_opengl(window_name, width, height, pos_x, pos_y);
@@ -47,7 +49,7 @@ void Window::render()
 
         ImGui::Render();
 
-        glClearColor(1.f, 1.f, 1.f, 1.f);
+        glClearColor(background_color_.x(), background_color_.z(), background_color_.y(), background_color_.w());
         glClear(GL_COLOR_BUFFER_BIT);
 
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

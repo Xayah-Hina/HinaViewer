@@ -21,12 +21,13 @@ namespace HinaGUI
         void launch();
         void kill();
         void resize(int width, int height);
+        void set_background_color(const Eigen::Vector4f &color);
 
     protected:
         void parse(const nlohmann::json &json) override;
 
     protected:
-        Window *window_ = nullptr;
+        Core::Window *window_ = nullptr;
     };
 }
 

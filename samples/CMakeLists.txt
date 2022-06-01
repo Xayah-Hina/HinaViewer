@@ -7,3 +7,4 @@ foreach (SAMPLE ${SAMPLES})
     target_include_directories(${SAMPLE} PRIVATE ${CMAKE_SOURCE_DIR})
     target_link_libraries(${SAMPLE} PRIVATE ${ImGUI_LIB})
 endforeach ()
+
