@@ -10,7 +10,7 @@ namespace HinaGUI
     public:
         struct HinaViewerDesc : public Desc
         {
-            int pos_x, pox_y;
+            int pos_x, pos_y;
             int width, height;
         };
 

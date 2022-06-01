@@ -27,6 +27,7 @@ namespace HinaGUI::Base
     protected:
         virtual void parse(const nlohmann::json &json);
         Desc *desc_ = nullptr; // DISABLE arbitrary altering from outside
+        std::string json_file_;
     };
 }
 
