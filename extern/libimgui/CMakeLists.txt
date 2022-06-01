@@ -9,3 +9,5 @@ target_link_libraries(
         glfw
         OpenGL::GL
 )
+
+set(EXTERN_INCLUDE_DIR ${EXTERN_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)

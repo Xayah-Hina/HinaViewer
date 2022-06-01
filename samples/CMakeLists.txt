@@ -1,14 +1,3 @@
-MACRO(SUBDIR_LIST result current_dir)
-    FILE(GLOB children RELATIVE ${current_dir} ${current_dir}/*)
-    SET(dirlist "")
-    FOREACH(child ${children})
-        IF(IS_DIRECTORY ${current_dir}/${child})
-            LIST(APPEND dirlist ${child})
-        ENDIF()
-    ENDFOREACH()
-    SET(${result} ${dirlist})
-ENDMACRO()
-
 set(ImGUI_LIB libimgui)
 
 SUBDIR_LIST(SAMPLES ${CMAKE_CURRENT_SOURCE_DIR})

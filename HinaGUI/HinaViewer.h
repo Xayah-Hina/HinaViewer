@@ -1,6 +1,5 @@
-#ifndef LEARNIMGUI_HINAVIEWER_H
-#define LEARNIMGUI_HINAVIEWER_H
-
+#ifndef HINAGUI_HINAVIEWER_H
+#define HINAGUI_HINAVIEWER_H
 
 class HinaViewer
 {
@@ -8,4 +7,4 @@ class HinaViewer
 };
 
 
-#endif //LEARNIMGUI_HINAVIEWER_H
+#endif //HINAGUI_HINAVIEWER_H
