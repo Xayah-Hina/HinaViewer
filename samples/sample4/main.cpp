@@ -1,4 +1,4 @@
-#include "../../HinaGUI/HinaViewer.h"
+#include "HinaGUI/HinaViewer.h"
 
 int main()
 {
