@@ -1,4 +1,4 @@
-set(ImGUI_LIB libimgui HinaGUI)
+set(ImGUI_LIB libimgui libglad HinaGUI)
 
 SUBDIR_LIST(SAMPLES ${CMAKE_CURRENT_SOURCE_DIR})
 
