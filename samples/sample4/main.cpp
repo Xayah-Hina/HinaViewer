@@ -2,12 +2,13 @@
 
 #define _USE_MATH_DEFINES
 #include "OpenMesh/Core/IO/MeshIO.hh"
-#include "OpenMesh/Core/Mesh/TriMesh_ArrayKernelT.hh"
+//#include "OpenMesh/Core/Mesh/TriMesh_ArrayKernelT.hh"
+#include <OpenMesh/Core/Mesh/PolyMesh_ArrayKernelT.hh>
 
 #include "GL/glut.h"
 #include <iostream>
 
-OpenMesh::TriMesh_ArrayKernelT<> mesh;
+OpenMesh::PolyMesh_ArrayKernelT<> mesh;
 
 void drawFunc() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -15,9 +16,9 @@ void drawFunc() {
     glPushMatrix();
     glBegin(GL_TRIANGLES);
 
-    for (OpenMesh::TriMesh_ArrayKernelT<>::FaceIter f_it = mesh.faces_begin(); f_it != mesh.faces_end(); ++f_it)
+    for (OpenMesh::PolyMesh_ArrayKernelT<>::FaceIter f_it = mesh.faces_begin(); f_it != mesh.faces_end(); ++f_it)
     {
-        for (OpenMesh::TriMesh_ArrayKernelT<>::FVIter fv_it = mesh.fv_begin(*f_it); fv_it != mesh.fv_end(*f_it); ++fv_it)
+        for (OpenMesh::PolyMesh_ArrayKernelT<>::FVIter fv_it = mesh.fv_begin(*f_it); fv_it != mesh.fv_end(*f_it); ++fv_it)
         {
             glColor3ubv(mesh.color(*fv_it).data());
             glVertex3fv(mesh.point(*fv_it).data());
@@ -35,7 +36,7 @@ int main()
     mesh.request_vertex_colors();
     OpenMesh::IO::Options opt;
     opt += OpenMesh::IO::Options::VertexColor;
-    std::cout << OpenMesh::IO::read_mesh(mesh, "C:/Users/Administrator/Desktop/BFU_Graphics/HinaGUI/resources/bunny.off", opt) << std::endl;
+    std::cout << OpenMesh::IO::read_mesh(mesh, "C:/Users/Administrator/Desktop/BFU_Graphics/libigl/cmake-build-release/_deps/libigl_tutorial_tata-src/armadillo.obj", opt) << std::endl;
 
     int foo = 1;
     char * bar[1] = {" "};
@@ -46,7 +47,7 @@ int main()
     glutCreateWindow("first");
 
     glShadeModel(GL_SMOOTH);
-    glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
+    glClearColor(1.0f, 1.0f, 1.0f, 0.5f);
     glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
