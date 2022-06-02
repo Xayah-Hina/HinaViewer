@@ -25,4 +25,5 @@ foreach (EXT_DIR ${EXT_DIRS})
     add_subdirectory(${EXT_DIR})
     set(TEMP_INCLUDE ${TEMP_INCLUDE} ${CMAKE_CURRENT_SOURCE_DIR}/${EXT_DIR})
 endforeach()
+
 set(EXTERN_INCLUDE_DIR ${TEMP_INCLUDE} PARENT_SCOPE)
