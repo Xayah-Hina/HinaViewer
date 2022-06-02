@@ -2,6 +2,12 @@
   "name": "Hina GUI Classic Window",
   "width": 1024,
   "height": 768,
-  "pos_x": 0,
-  "pos_y": 0
+  "pos_x": 40,
+  "pos_y": 40,
+  "background_color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ]
 }

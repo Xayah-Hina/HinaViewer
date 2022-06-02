@@ -14,6 +14,7 @@ namespace HinaGUI
             std::string name;
             int width, height;
             int pos_x, pos_y;
+            Eigen::Vector4f background_color;
         };
 
     public:

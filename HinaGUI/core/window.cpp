@@ -1,19 +1,17 @@
 #include "window.h"
 
-#include <utility>
-
 using namespace HinaGUI::Core;
 
-void Window::init(const std::string &window_name, int width, int height, int pos_x, int pos_y)
+void Window::init(const std::string &window_name, int width, int height, int pos_x, int pos_y, const Eigen::Vector4f &background_color)
 {
-    init_opengl(window_name, width, height, pos_x, pos_y);
-    init_imgui();
+    background_color_ = background_color;
+    _init_opengl(window_name, width, height, pos_x, pos_y);
+    _init_imgui();
 }
 
 void Window::kill()
 {
-    kill_imgui();
-    kill_opengl();
+    _kill_opengl_and_imgui();
     window_ = nullptr;
 }
 
@@ -59,7 +57,7 @@ void Window::render()
     }
 }
 
-void Window::init_opengl(const std::string &window_name, int width, int height, int pos_x, int pos_y)
+void Window::_init_opengl(const std::string &window_name, int width, int height, int pos_x, int pos_y)
 {
     glfwInit();
     glfwWindowHint(GLFW_SAMPLES, 8); // MSAA samples
@@ -77,7 +75,7 @@ void Window::init_opengl(const std::string &window_name, int width, int height, 
     gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
 }
 
-void Window::init_imgui()
+void Window::_init_imgui()
 {
     ImGui::CreateContext();
     ImGuiIO &io = ImGui::GetIO();
@@ -91,15 +89,11 @@ void Window::init_imgui()
     // TODO: Load Fonts
 }
 
-void Window::kill_opengl()
-{
-    glfwDestroyWindow(window_);
-    glfwTerminate();
-}
-
-void Window::kill_imgui()
+void Window::_kill_opengl_and_imgui()
 {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
+    glfwDestroyWindow(window_);
+    glfwTerminate();
 }

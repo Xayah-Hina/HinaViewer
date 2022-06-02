@@ -19,5 +19,3 @@ add_subdirectory(HinaGUI)
 #START("LOADING SAMPLES")
 add_subdirectory(samples)
 #END("SAMPLES DONE")
-
-add_definitions(-DHINAGUI_SCENE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/scenes/")

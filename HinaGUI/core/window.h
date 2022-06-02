@@ -14,24 +14,23 @@
 
 namespace HinaGUI::Core
 {
-// default OpenGL backend window, TODO: support multi-backend
     class Window
     {
     public:
-        void init(const std::string &window_name, int width, int height, int pos_x = 0, int pos_y = 0);
+        void init(const std::string &window_name, int width, int height, int pos_x, int pos_y, const Eigen::Vector4f& background_color);
         void render();
         void kill();
 
     protected:
-        void init_opengl(const std::string &window_name, int width, int height, int pos_x = 0, int pos_y = 0);
-        void init_imgui();
-        void kill_opengl();
-        void kill_imgui();
+        void _init_opengl(const std::string &window_name, int width, int height, int pos_x, int pos_y);
+        void _init_imgui();
+        void _kill_opengl_and_imgui();
 
     protected:
         GLFWwindow *window_ = nullptr;
-        Eigen::Vector4f background_color_ = COLOR::WHITE;
+        Eigen::Vector4f background_color_;
     };
 }
+// TODO: support multi-backend
 
 #endif //HINAGUI_WINDOW_H
