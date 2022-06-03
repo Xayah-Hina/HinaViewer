@@ -3,15 +3,31 @@
 
 #include "Eigen/Dense"
 
-#define HINA_INLINE
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64)
+  #define HINA_INLINE __forceinline
+#else
+#define HINA_INLINE __attribute__((always_inline))
+#endif
 
-struct COLOR
-{
-    static Eigen::Vector4f WHITE;
-    static Eigen::Vector4f BLACK;
-    static Eigen::Vector4f RED;
-    static Eigen::Vector4f GREEN;
-    static Eigen::Vector4f BLUE;
-};
+#ifdef HINA_USE_DOUBLE
+using Real = double;
+#else
+using Real = float;
+#endif
+
+using Vector2r = Eigen::Matrix<Real, 2, 1, Eigen::DontAlign>;
+using Vector3r = Eigen::Matrix<Real, 3, 1, Eigen::DontAlign>;
+using Vector4r = Eigen::Matrix<Real, 4, 1, Eigen::DontAlign>;
+using Vector5r = Eigen::Matrix<Real, 5, 1, Eigen::DontAlign>;
+using Vector6r = Eigen::Matrix<Real, 6, 1, Eigen::DontAlign>;
+using Matrix2r = Eigen::Matrix<Real, 2, 2, Eigen::DontAlign>;
+using Matrix3r = Eigen::Matrix<Real, 3, 3, Eigen::DontAlign>;
+using Matrix4r = Eigen::Matrix<Real, 4, 4, Eigen::DontAlign>;
+
+const Vector4r WHITE = Vector4r(1.f, 1.f, 1.f, 1.f);
+const Vector4r BLACK = Vector4r(0.f, 0.f, 0.f, 1.f);
+const Vector4r RED = Vector4r(1.f, 0.f, 0.f, 1.f);
+const Vector4r GREEN = Vector4r(0.f, 1.f, 0.f, 1.f);
+const Vector4r BLUE = Vector4r(0.f, 0.f, 1.f, 1.f);
 
 #endif //HINAGUI_DEFINES_H

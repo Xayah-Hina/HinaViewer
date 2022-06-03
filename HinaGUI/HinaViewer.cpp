@@ -1,5 +1,7 @@
 #include "HinaViewer.h"
 
+#include "core/window_opengl.h"
+
 #include <vector>
 
 using namespace HinaGUI;
@@ -15,7 +17,7 @@ void HinaViewer::init(const std::string &json_file)
     auto pos_y = desc_->as<HinaViewerDesc>()->pos_y;
     auto background_color = desc_->as<HinaViewerDesc>()->background_color;
 
-    window_ = new Core::Window();
+    window_ = new Core::OpenGLWindow();
     window_->init(name, width, height, pos_x, pos_y, background_color);
 }
 
@@ -31,7 +33,7 @@ void HinaViewer::parse(const nlohmann::json &json)
     res->height = json["height"];
     std::vector<float> bc = json["background_color"];
     assert(bc.size() == 4);
-    res->background_color = Eigen::Vector4f(bc[0], bc[1], bc[2], bc[3]);
+    res->background_color = Vector4r(bc[0], bc[1], bc[2], bc[3]);
 
     desc_ = res;
 }
@@ -52,7 +54,7 @@ void HinaViewer::resize(int width, int height)
     desc_->as<HinaViewerDesc>()->height = height;
 }
 
-void HinaViewer::set_background_color(const Eigen::Vector4f &color)
+void HinaViewer::set_background_color(const Vector4r &color)
 {
 
 }

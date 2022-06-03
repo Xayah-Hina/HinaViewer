@@ -2,11 +2,11 @@
 #define HINAGUI_HINAVIEWER_H
 
 #include "base/desc_initable.h"
-#include "core/window.h"
+#include "base/window.h"
 
 namespace HinaGUI
 {
-    class HinaViewer : public Base::DescInitable
+    class HinaViewer : public DescInitable
     {
     public:
         struct HinaViewerDesc : public Desc
@@ -14,7 +14,7 @@ namespace HinaGUI
             std::string name;
             int width, height;
             int pos_x, pos_y;
-            Eigen::Vector4f background_color;
+            Vector4r background_color;
         };
 
     public:
@@ -22,13 +22,13 @@ namespace HinaGUI
         void launch();
         void kill();
         void resize(int width, int height);
-        void set_background_color(const Eigen::Vector4f &color);
+        void set_background_color(const Vector4r &color);
 
     protected:
         void parse(const nlohmann::json &json) override;
 
     protected:
-        Core::Window *window_ = nullptr;
+        Window *window_ = nullptr;
     };
 }
 
