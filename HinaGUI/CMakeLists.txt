@@ -1,4 +1,6 @@
-set(DEPENDENCY_LIB libimgui libglad)
+find_package(Assimp REQUIRED)
+
+set(DEPENDENCY_LIB libimgui libglad ${ASSIMP_LIBRARIES})
 file(GLOB_RECURSE HINA_GUI_SRC *.h *.cpp)
 add_library(HinaGUI ${HINA_GUI_SRC})
 target_include_directories(HinaGUI PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

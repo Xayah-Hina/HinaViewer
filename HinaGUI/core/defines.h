@@ -3,6 +3,8 @@
 
 #include "Eigen/Dense"
 
+#include <cfloat>
+
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64)
   #define HINA_INLINE __forceinline
 #else
@@ -11,8 +13,12 @@
 
 #ifdef HINA_USE_DOUBLE
 using Real = double;
+#define REAL_MAX DBL_MAX
+#define REAL_MIN DBL_MIN
 #else
 using Real = float;
+#define REAL_MAX FLT_MAX
+#define REAL_MIN FLT_MIN
 #endif
 
 using Vector2r = Eigen::Matrix<Real, 2, 1, Eigen::DontAlign>;

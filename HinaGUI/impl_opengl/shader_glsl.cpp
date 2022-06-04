@@ -1,4 +1,4 @@
-#include "glsl_shader.h"
+#include "shader_glsl.h"
 
 #include <glad/glad.h>
 

@@ -15,7 +15,7 @@ void OpenGLWindow::kill()
     window_ = nullptr;
 }
 
-void OpenGLWindow::render()
+void OpenGLWindow::render(int camera_ID)
 {
     while (!glfwWindowShouldClose(window_))
     {
@@ -104,33 +104,6 @@ void OpenGLWindow::_kill_opengl_and_imgui()
     ImGui::DestroyContext();
     glfwDestroyWindow(window_);
     glfwTerminate();
-}
-
-void OpenGLWindow::register_render_object(Renderable *renderable)
-{
-    unsigned int VAO, VBO, EBO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, renderable->get_vertices_size(), renderable->get_vertices_data(), GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, renderable->get_indices_size(), renderable->get_indices_data(), GL_STATIC_DRAW);
-
-#ifdef HINA_USE_DOUBLE
-    glVertexAttribPointer(0, 3, GL_DOUBLE, GL_FALSE, 3 * sizeof(double), (void*)0);
-#else
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *) 0);
-#endif
-    glEnableVertexAttribArray(0);
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
-
-    renderable_list_[renderable] = VAO;
 }
 
 void OpenGLWindow::resize(int width, int height)

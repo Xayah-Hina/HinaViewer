@@ -8,8 +8,8 @@
 #include "imgui_impl_opengl3.h"
 #include "implot.h"
 
-#include "base/defines.h"
-#include "base/window.h"
+#include "core/defines.h"
+#include "core/window.h"
 
 #include <string>
 
@@ -19,11 +19,10 @@ namespace HinaGUI::Core
     {
     public:
         void init(const std::string &window_name, int width, int height, int pos_x, int pos_y, const Vector4r& background_color) final;
-        void render() final;
+        void render(int camera_ID) final;
         void kill() final;
 
     public:
-        HINA_INLINE void register_render_object(Renderable *renderable) override;
         HINA_INLINE void resize(int width, int height) override;
 
     protected:

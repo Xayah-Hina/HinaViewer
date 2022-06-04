@@ -1,8 +1,8 @@
 #ifndef HINAGUI_HINAVIEWER_H
 #define HINAGUI_HINAVIEWER_H
 
-#include "base/desc_initable.h"
-#include "base/window.h"
+#include "util/desc_initable.h"
+#include "core/window.h"
 
 namespace HinaGUI
 {

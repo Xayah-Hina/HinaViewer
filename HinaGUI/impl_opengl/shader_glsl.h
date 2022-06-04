@@ -1,7 +1,7 @@
-#ifndef HINAGUI_GLSL_SHADER_H
-#define HINAGUI_GLSL_SHADER_H
+#ifndef HINAGUI_SHADER_GLSL_H
+#define HINAGUI_SHADER_GLSL_H
 
-#include "../base/shader.h"
+#include "../core/shader.h"
 
 class ShaderGLSL final : public Shader
 {
@@ -22,8 +22,8 @@ public:
     void set_shader_var_mat4(const std::string &name, const Matrix4r &value) override;
 
 private:
-    unsigned int ID_ = -1;
+    unsigned int ID_ = 0;
 };
 
 
-#endif //HINAGUI_GLSL_SHADER_H
+#endif //HINAGUI_SHADER_GLSL_H

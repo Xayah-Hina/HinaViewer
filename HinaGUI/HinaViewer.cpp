@@ -40,7 +40,7 @@ void HinaViewer::parse(const nlohmann::json &json)
 
 void HinaViewer::launch()
 {
-    window_->render();
+    window_->render(0);
 }
 
 void HinaViewer::kill()
