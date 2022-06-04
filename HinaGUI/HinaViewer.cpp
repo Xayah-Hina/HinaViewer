@@ -48,13 +48,7 @@ void HinaViewer::kill()
     window_->kill();
 }
 
-void HinaViewer::resize(int width, int height)
-{
-    desc_->as<HinaViewerDesc>()->width = width;
-    desc_->as<HinaViewerDesc>()->height = height;
-}
-
 void HinaViewer::set_background_color(const Vector4r &color)
 {
-
+    desc_->as<HinaViewerDesc>()->background_color = color;
 }

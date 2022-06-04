@@ -2,8 +2,8 @@
 #define HINAGUI_TRIANGLE_MODEL_H
 
 #include "../base/renderable.h"
-#include "particles_immutable.h"
-#include "mesh_triangles.h"
+#include "../base/particles.h"
+#include "../base/mesh.h"
 
 class TriangleModel : public Renderable
 {
@@ -18,8 +18,8 @@ public: // Renderable Implements
     int get_indices_size() override;
 
 private:
-    ImmutableParticles particles_;
-    IndexedTriangleMesh mesh_;
+    Particles<Vector3r> *particles_ = nullptr;
+    Mesh *mesh_ = nullptr;
 };
 
 #endif //HINAGUI_TRIANGLE_MODEL_H

@@ -13,7 +13,9 @@ public:
     virtual void render() = 0;
     virtual void kill() = 0;
 
+public:
     HINA_INLINE virtual void register_render_object(Renderable *renderable) = 0;
+    HINA_INLINE virtual void resize(int width, int height) = 0;
 
 protected:
     std::map<Renderable *, unsigned int> renderable_list_; // first: Renderable Data Target, second: Object GPU ID, like VAO for OpenGL

@@ -21,7 +21,6 @@ namespace HinaGUI
         void init(const std::string &json_file) override;
         void launch();
         void kill();
-        void resize(int width, int height);
         void set_background_color(const Vector4r &color);
 
     protected:

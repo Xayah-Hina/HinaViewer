@@ -22,7 +22,9 @@ namespace HinaGUI::Core
         void render() final;
         void kill() final;
 
+    public:
         HINA_INLINE void register_render_object(Renderable *renderable) override;
+        HINA_INLINE void resize(int width, int height) override;
 
     protected:
         void _init_opengl(const std::string &window_name, int width, int height, int pos_x, int pos_y);

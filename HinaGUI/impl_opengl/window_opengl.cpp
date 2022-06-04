@@ -132,3 +132,8 @@ void OpenGLWindow::register_render_object(Renderable *renderable)
 
     renderable_list_[renderable] = VAO;
 }
+
+void OpenGLWindow::resize(int width, int height)
+{
+    glfwSetWindowSize(window_, width, height);
+}

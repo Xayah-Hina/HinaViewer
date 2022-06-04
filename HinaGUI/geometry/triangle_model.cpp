@@ -7,12 +7,18 @@ void TriangleModel::load_triangle_model(const std::string &model_path)
 
 Real *TriangleModel::get_vertices_data()
 {
-    return particles_.get_aligned_data();
+    if (particles_ != nullptr)
+        return particles_->get_aligned_data();
+    else
+        return nullptr;
 }
 
 int *TriangleModel::get_indices_data()
 {
-    return mesh_.get_aligned_data();
+    if (mesh_ != nullptr)
+        return mesh_->get_aligned_data();
+    else
+        return nullptr;
 }
 
 int TriangleModel::get_vertices_size()
