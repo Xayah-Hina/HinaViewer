@@ -1,6 +1,6 @@
 #include "HinaViewer.h"
 
-#include "core/window_opengl.h"
+#include "impl_opengl/window_opengl.h"
 
 #include <vector>
 

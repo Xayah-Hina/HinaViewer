@@ -8,8 +8,8 @@
 #include "imgui_impl_opengl3.h"
 #include "implot.h"
 
-#include "../base/defines.h"
-#include "../base/window.h"
+#include "base/defines.h"
+#include "base/window.h"
 
 #include <string>
 
@@ -38,6 +38,5 @@ namespace HinaGUI::Core
         Vector4r background_color_;
     };
 }
-// TODO: support multi-backend (Vulkan etc.)
 
 #endif //HINAGUI_OPENGLWINDOW_H
