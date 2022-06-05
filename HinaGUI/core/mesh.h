@@ -25,14 +25,15 @@ struct Face
 class Mesh
 {
 public:
-    HINA_INLINE void init(unsigned int *data, size_t size, unsigned int vertices_per_face = 3)
+    HINA_INLINE void init(unsigned int *data, size_t size, const std::vector<unsigned int> &textures_id, unsigned int vertices_per_face = 3)
     {
         indices_.resize(size);
         for (size_t i = 0; i < size; ++i, ++data)
             indices_[i] = *data;
+        textures_id_ = textures_id;
     }
 
-    HINA_INLINE void del()
+    HINA_INLINE void clear()
     {
         indices_.clear();
         vertices_.clear();
@@ -59,6 +60,14 @@ protected:
     std::vector<Vertex> vertices_;
     std::vector<Edge> edges_;
     std::vector<Face> faces_;
+
+    std::vector<unsigned int> textures_id_;
 };
 
 #endif //HINAGUI_MESH_H
+
+
+
+
+
+

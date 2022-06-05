@@ -1,11 +1,11 @@
-#ifndef HINAGUI_PARTICLES_H
-#define HINAGUI_PARTICLES_H
+#ifndef HINAGUI_PARTICLES_POOL_H
+#define HINAGUI_PARTICLES_POOL_H
 
 #include "defines.h"
 
 #include <vector>
 
-class Particles
+class ParticlesPool
 {
 public:
     HINA_INLINE size_t init(Vector3r *data, size_t size)
@@ -20,13 +20,16 @@ public:
         return start;
     }
 
-    HINA_INLINE void del(unsigned int vertices_start_offset, unsigned int vertices_size)
+    HINA_INLINE void emplace_back(const Vector3r &particle)
+    { particles_.emplace_back(particle); }
+
+    HINA_INLINE void clear(unsigned int vertices_start_offset, unsigned int vertices_size)
     {
         for (unsigned int i = 0u; i < vertices_size; ++i)
             particles_[i + vertices_start_offset] = Vector3r(REAL_MAX, REAL_MAX, REAL_MAX);
     }
 
-    HINA_INLINE void del()
+    HINA_INLINE void clear()
     { particles_.clear(); }
 
 public:
@@ -47,6 +50,10 @@ public:
 
 protected:
     std::vector<Vector3r> particles_;
+    std::vector<Vector3r> normals_;
+    std::vector<Vector2r> tex_coords_;
+    std::vector<Vector3r> tangent_;
+    std::vector<Vector3r> bi_tangent_;
 };
 
-#endif //HINAGUI_PARTICLES_H
+#endif //HINAGUI_PARTICLES_POOL_H
