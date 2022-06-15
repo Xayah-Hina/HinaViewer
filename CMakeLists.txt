@@ -9,4 +9,8 @@ include(cmake/check_platform.cmake)
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
+option(BGFX_BUILD_EXAMPLES OFF)
+option(BGFX_INSTALL OFF)
 add_subdirectory(submodules/bgfx)
+#add_subdirectory(src)
+add_subdirectory(samples)
