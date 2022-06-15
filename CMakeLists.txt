@@ -11,6 +11,6 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 
 option(BGFX_BUILD_EXAMPLES OFF)
 option(BGFX_INSTALL OFF)
-add_subdirectory(submodules/bgfx)
+add_subdirectory(submodules/bgfx.cmake)
 #add_subdirectory(src)
 add_subdirectory(samples)

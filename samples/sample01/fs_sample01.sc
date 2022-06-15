@@ -5,7 +5,7 @@ $input v_color0
  * License: https://github.com/bkaradzic/bgfx/blob/master/LICENSE
  */
 
-#include "../../submodules/bgfx/bgfx/examples/common/common.sh"
+#include "../../submodules/bgfx.cmake/bgfx/examples/common/common.sh"
 
 void main()
 {
