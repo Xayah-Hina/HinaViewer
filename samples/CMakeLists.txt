@@ -51,3 +51,4 @@ function(add_sample EXAMPLE_NAME)
 endfunction()
 
 add_sample(sample01)
+add_sample(sample02)
