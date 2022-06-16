@@ -6,6 +6,7 @@
 #include "imgui/imgui.h"
 
 #include "vertex.h"
+#include "mesh.h"
 
 namespace viewer
 {
@@ -21,8 +22,8 @@ namespace viewer
         int shutdown() override;
 
     public:
-        virtual void load_vertex_buffer() = 0;
-        virtual void load_indices_buffer() = 0;
+        void load_vertex_buffer(std::shared_ptr<IVertex> v_ptr); // RAII: pass by value to pass life cycle
+        void load_indices_buffer(std::shared_ptr<IMesh> m_ptr); // RAII: pass by value to pass life cycle
 
         uint32_t m_width;
         uint32_t m_height;

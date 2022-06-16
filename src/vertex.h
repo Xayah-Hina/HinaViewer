@@ -20,6 +20,13 @@ namespace viewer
         Eigen::Vector3f pos;
         uint32_t abgr;
     };
+
+    template<typename Vertex, typename std::enable_if<std::is_base_of<viewer::IVertex, Vertex>::value>::type * = nullptr>
+    struct Particles
+    {
+        
+        Vertex *vertices;
+    };
 }
 
 
