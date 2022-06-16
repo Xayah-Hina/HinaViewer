@@ -7,7 +7,53 @@
 #include "bgfx_utils.h"
 #include "imgui/imgui.h"
 
-#include "Eigen/Dense"
+#include "../../src/particles_pool.h"
+
+#include <vector>
+
+struct Vertex
+{
+    float m_x;
+    float m_y;
+    float m_z;
+    uint32_t m_abgr;
+};
+
+struct MyParticles : viewer::IParticles<Vertex>
+{
+    std::vector<Vertex> vertices;
+
+    bgfx::VertexLayout get_layout() override
+    {
+        bgfx::VertexLayout layout;
+        layout
+                .begin()
+                .add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float)
+                .add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Uint8, true)
+                .end();
+        return layout;
+    }
+
+    const Vertex &get_ith_vertex(size_t i) override
+    {
+        return vertices.at(i);
+    }
+
+    void set_ith_vertex(size_t i, const Vertex &v) override
+    {
+        vertices.at(i) = v;
+    }
+
+    void *data() override
+    {
+        return vertices.data();
+    }
+
+    size_t size() override
+    {
+        return vertices.size();
+    }
+};
 
 namespace
 {
