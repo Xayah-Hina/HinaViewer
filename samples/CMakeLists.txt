@@ -1,5 +1,4 @@
 function(add_sample EXAMPLE_NAME)
-    message(${CMAKE_CURRENT_SOURCE_DIR})
     set(SAMPLE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${EXAMPLE_NAME})
 
     set(SHADERS "")

@@ -28,6 +28,10 @@ void viewer::RenderingBackend::init(int32_t _argc, const char *const *_argv, uin
 
     // Set view 0 clear state.
     bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x000000ff, 1.0f, 0);
+
+    m_vbh = bgfx::createVertexBuffer(
+            bgfx::makeRef(MyParticlesPool::pool[0].data(), MyParticlesPool::pool[0].size()), MyParticlesPool::pool[0].get_layout()
+    );
 }
 
 bool viewer::RenderingBackend::update()
@@ -38,14 +42,4 @@ bool viewer::RenderingBackend::update()
 int viewer::RenderingBackend::shutdown()
 {
     return 0;
-}
-
-void viewer::RenderingBackend::load_vertex_buffer(std::shared_ptr<IVertex> v_ptr)
-{
-
-}
-
-void viewer::RenderingBackend::load_indices_buffer(std::shared_ptr<IMesh> m_ptr)
-{
-
 }

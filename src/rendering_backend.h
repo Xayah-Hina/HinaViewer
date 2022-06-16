@@ -8,8 +8,20 @@
 #include "vertex.h"
 #include "mesh.h"
 
+#include <memory>
+
+#include "Eigen/Dense"
+
 namespace viewer
 {
+    struct IVertex
+    {
+        Eigen::Vector3f pos; // 12
+        uint32_t abgr{}; // 16
+    };
+
+    using MyParticlesPool = ParticlesPool<IVertex>;
+
     class RenderingBackend : public entry::AppI
     {
     public:
@@ -22,15 +34,17 @@ namespace viewer
         int shutdown() override;
 
     public:
-        void load_vertex_buffer(std::shared_ptr<IVertex> v_ptr); // RAII: pass by value to pass life cycle
-        void load_indices_buffer(std::shared_ptr<IMesh> m_ptr); // RAII: pass by value to pass life cycle
+
+        // RAII: pass by value to pass life cycle
+//        template<typename Vec3f>
+//        void load_indices_buffer(std::shared_ptr<IMesh> m_ptr); // RAII: pass by value to pass life cycle
 
         uint32_t m_width;
         uint32_t m_height;
         uint32_t m_debug;
         uint32_t m_reset;
         bgfx::VertexBufferHandle m_vbh;
-//        bgfx::IndexBufferHandle m_ibh[BX_COUNTOF(ptState)];
+        bgfx::IndexBufferHandle m_ibh;
         bgfx::ProgramHandle m_program;
         int64_t m_timeOffset;
         int32_t m_pt;
