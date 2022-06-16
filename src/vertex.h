@@ -1,11 +1,26 @@
-#ifndef HINAGUI_VERTEX_H
-#define HINAGUI_VERTEX_H
+#ifndef HINAVIEWER_VERTEX_H
+#define HINAVIEWER_VERTEX_H
 
+#include "bgfx_utils.h"
 
-class Vertex
+#include "Eigen/Dense"
+
+namespace viewer
 {
-    virtual void init() = 0;
-};
+    struct IVertex
+    {
+        virtual void init() = 0;
+        static bgfx::VertexLayout m_layout;
+    };
+
+    struct VertexEigen : IVertex
+    {
+        void init() override;
+
+        Eigen::Vector3f pos;
+        uint32_t abgr;
+    };
+}
 
 
-#endif //HINAGUI_VERTEX_H
+#endif //HINAVIEWER_VERTEX_H
