@@ -2,3 +2,6 @@
 	path = submodules/bgfx.cmake
 	url = https://github.com/bkaradzic/bgfx.cmake.git
 	ignore = all
+[submodule "submodules/libigl"]
+	path = submodules/libigl
+	url = https://github.com/libigl/libigl.git

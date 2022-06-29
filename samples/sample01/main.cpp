@@ -7,6 +7,8 @@
 #include "bgfx_utils.h"
 #include "imgui/imgui.h"
 
+#include "igl/readOBJ.h"
+
 #include "../../src/particles_pool.h"
 
 #include <vector>
@@ -32,16 +34,6 @@ struct MyParticles : viewer::IParticles<Vertex>
                 .add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Uint8, true)
                 .end();
         return layout;
-    }
-
-    const Vertex &get_ith_vertex(size_t i) override
-    {
-        return vertices.at(i);
-    }
-
-    void set_ith_vertex(size_t i, const Vertex &v) override
-    {
-        vertices.at(i) = v;
     }
 
     void *data() override
@@ -176,6 +168,10 @@ namespace
         ExampleCubes(const char *_name, const char *_description, const char *_url)
                 : entry::AppI(_name, _description, _url), m_pt(0), m_r(true), m_g(true), m_b(true), m_a(true)
         {
+            std::vector<std::vector<float>> _V;
+            std::vector<std::vector<int>> _F;
+            igl::readOBJ("F:/Projects/HinaViewer/submodules/bgfx.cmake/bgfx/examples/assets/meshes/bunny.obj", _V, _F);
+            std::cout << _V.size() << " " << _F.size() << std::endl;
         }
 
         void init(int32_t _argc, const char *const *_argv, uint32_t _width, uint32_t _height) override
